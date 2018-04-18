@@ -1,0 +1,25 @@
+{
+    "name": "strikersfran/install",
+    "description": "",
+    "authors": [
+        {
+            "name": "Francisco Carrión",
+            "email": "carrionfn@gmail.com"
+        }
+    ],
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Modules\\Install\\Providers\\InstallServiceProvider"
+            ],
+            "aliases": {
+                
+            }
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "Modules\\Install\\": ""
+        }
+    }
+}
