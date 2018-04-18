@@ -1,11 +1,11 @@
 <?php
 
-namespace Modules\Install\Providers;
+namespace Modules\Installer\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Database\Eloquent\Factory;
 
-class InstallServiceProvider extends ServiceProvider
+class InstallerServiceProvider extends ServiceProvider
 {
     /**
      * Indicates if loading of the provider is deferred.
@@ -46,10 +46,10 @@ class InstallServiceProvider extends ServiceProvider
     protected function registerConfig()
     {
         $this->publishes([
-            __DIR__.'/../Config/config.php' => config_path('install.php'),
+            __DIR__.'/../Config/config.php' => config_path('installer.php'),
         ], 'config');
         $this->mergeConfigFrom(
-            __DIR__.'/../Config/config.php', 'install'
+            __DIR__.'/../Config/config.php', 'installer'
         );
     }
 
@@ -60,7 +60,7 @@ class InstallServiceProvider extends ServiceProvider
      */
     public function registerViews()
     {
-        $viewPath = resource_path('views/modules/install');
+        $viewPath = resource_path('views/modules/installer');
 
         $sourcePath = __DIR__.'/../Resources/views';
 
@@ -69,8 +69,8 @@ class InstallServiceProvider extends ServiceProvider
         ],'views');
 
         $this->loadViewsFrom(array_merge(array_map(function ($path) {
-            return $path . '/modules/install';
-        }, \Config::get('view.paths')), [$sourcePath]), 'install');
+            return $path . '/modules/installer';
+        }, \Config::get('view.paths')), [$sourcePath]), 'installer');
     }
 
     /**
@@ -80,12 +80,12 @@ class InstallServiceProvider extends ServiceProvider
      */
     public function registerTranslations()
     {
-        $langPath = resource_path('lang/modules/install');
+        $langPath = resource_path('lang/modules/installer');
 
         if (is_dir($langPath)) {
-            $this->loadTranslationsFrom($langPath, 'install');
+            $this->loadTranslationsFrom($langPath, 'installer');
         } else {
-            $this->loadTranslationsFrom(__DIR__ .'/../Resources/lang', 'install');
+            $this->loadTranslationsFrom(__DIR__ .'/../Resources/lang', 'installer');
         }
     }
 

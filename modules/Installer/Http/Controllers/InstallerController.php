@@ -1,12 +1,12 @@
 <?php
 
-namespace Modules\Install\Http\Controllers;
+namespace Modules\Installer\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
 
-class InstallController extends Controller
+class InstallerController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +14,7 @@ class InstallController extends Controller
      */
     public function index()
     {
-        return view('install::index');
+        return view('installer::index');
     }
 
     /**
@@ -23,7 +23,7 @@ class InstallController extends Controller
      */
     public function create()
     {
-        return view('install::create');
+        return view('installer::create');
     }
 
     /**
@@ -41,7 +41,7 @@ class InstallController extends Controller
      */
     public function show()
     {
-        return view('install::show');
+        return view('installer::show');
     }
 
     /**
@@ -50,7 +50,7 @@ class InstallController extends Controller
      */
     public function edit()
     {
-        return view('install::edit');
+        return view('installer::edit');
     }
 
     /**

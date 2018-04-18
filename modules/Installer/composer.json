@@ -1,5 +1,5 @@
 {
-    "name": "strikersfran/install-module",
+    "name": "strikersfran/installer-module",
     "description": "Este modulo permite crear un wizard para la instalación base de la aplicación y su modulos necesarios",
     "type":"laravel-module",
     "authors": [
@@ -11,7 +11,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Modules\\Install\\Providers\\InstallServiceProvider"
+                "Modules\\Installer\\Providers\\InstallerServiceProvider"
             ],
             "aliases": {
                 
@@ -20,7 +20,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Modules\\Install\\": ""
+            "Modules\\Installer\\": ""
         }
     }
 }
