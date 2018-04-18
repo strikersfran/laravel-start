@@ -1,6 +1,7 @@
 {
-    "name": "strikersfran/install",
-    "description": "",
+    "name": "strikersfran/install-module",
+    "description": "Este modulo permite crear un wizard para la instalación base de la aplicación y su modulos necesarios",
+    "type":"laravel-module",
     "authors": [
         {
             "name": "Francisco Carrión",
