@@ -1,0 +1,79 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 09/01/2017, 05:37:49 PM
+    Author     : Francisco
+*/
+
+body {
+  margin-top: 50px;
+}
+
+.iw-breadcrumb {
+    list-style: none;
+    margin: 0;
+    padding: 28px 20px 20px;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+}
+
+.iw-breadcrumb li.iw-step-divider,
+.iw-breadcrumb li.iw-step {
+    background-color: #CFCFCF;
+}
+
+.iw-breadcrumb li.iw-step-divider {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    width: 50px;
+    height: 4px
+}
+
+.iw-breadcrumb li.iw-step-divider:first-child,
+.iw-breadcrumb li.iw-step-divider:last-child {
+    -webkit-flex: 1 0 auto;
+    -ms-flex: 1 0 auto;
+    flex: 1 0 auto;
+}
+
+.iw-breadcrumb li.iw-step {
+    font-style: normal;
+    width: 50px;
+    min-width: 50px;
+    height: 50px;
+    line-height: 50px;
+    font-size: 22px;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+    border-radius: 50%;
+    color: #909090;
+}
+
+.iw-breadcrumb li.iw-current {
+    background: #0275D8;
+    color: #FFF;
+}
+
+.move-rigth{
+    display: block;
+    float: right;
+}

@@ -1,7 +1,7 @@
 @extends('installer::layouts.master')
 
 @section('styles')
-<link href="{{ Module::asset('installer:css/module.css')}}" rel="stylesheet">
+<link href="{{ Module::asset('installer:css/module.css') }}" rel="stylesheet">
 @endsection
 
 @section('content')    
@@ -16,8 +16,8 @@
                         <div class="row iw-breadcrumb">
                             <li class="iw-step-divider iw-current"></li>
                             <li class="iw-step-divider iw-current"></li><li class="iw-step iw-current"><i class="fa fa-home"></i></li>
-                            <li class="iw-step-divider"></li><li class="iw-step"><i class="fa fa-sliders"></i></li>
-                            <li class="iw-step-divider"></li><li class="iw-step"><i class="fa fa-folder"></i></li>
+                            <li class="iw-step-divider iw-current"></li><li class="iw-step iw-current"><i class="fa fa-sliders"></i></li>
+                            <li class="iw-step-divider iw-current"></li><li class="iw-step iw-current"><i class="fa fa-folder"></i></li>
                             <li class="iw-step-divider"></li><li class="iw-step"><i class="fa fa-file-text-o"></i></li>
                             <li class="iw-step-divider"></li><li class="iw-step"><i class="fa fa-database"></i></li>
                             <li class="iw-step-divider"></li><li class="iw-step"><i class="fa fa-cubes"></i></li>
@@ -26,14 +26,21 @@
                             <li class="iw-step-divider"></li>
                         </div>
                         <div class="">
-                            <h2>Bienvenidos Laravel Start</h2>
-                            <h3>Este proceso los guiará por cada una de las
-                            opciones necesarias para llevar acabo la instalación de esta
-                            aplicación.</h3>
+                            <h2>Permisos</h2>
+                            <h4>Verificación de los Permisos de las carpetas</h4>
+                            @php ($sw=true)                            
+                            @foreach($formData as $req)                            
+                                <div class="alert alert-{{($req['check'])?'success':'danger'}} fade in">                                
+                                    <strong><i class="fa fa-{{($req['check'])?'check-circle':'times-circle'}}"></i></strong> {{ $req['label']}}
+                                </div>
+                                @if(!$req['check'])
+                                    @php ($sw=false)
+                                @endif
+                            @endforeach 
                         </div>
                     </div>
                     <div class="panel-footer text-right">                        
-                        <a class="btn btn-danger" type="button" href="{{ url('installer/requerimientos')}}">Siguiente</a>                        
+                        <a class="btn btn-danger {{ ($sw)?'':'disabled' }}" type="button" href="{{ url('installer/environment')}}">Siguiente</a>                        
                     </div>
                 </div>
             </div>

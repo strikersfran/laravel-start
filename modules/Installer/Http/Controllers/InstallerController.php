@@ -8,6 +8,8 @@ use Illuminate\Routing\Controller;
 
 class InstallerController extends Controller
 {
+    private $envPath;// = base_path('.env');
+    private $envExamplePath;// = base_path('.env.example');
     /**
      * Display a listing of the resource.
      * @return Response
@@ -17,56 +19,83 @@ class InstallerController extends Controller
         return view('installer::index');
     }
 
-    /**
-     * Show the form for creating a new resource.
-     * @return Response
-     */
-    public function create()
-    {
-        return view('installer::create');
+    /*Paso para verificar los requerimientos del servidor*/
+    
+    public function requerimientos(){
+        
+        $requirements =config('installer.requirements');
+        
+        $formData[] = [
+            'label' => 'Requiere la Versión de PHP '.$requirements['php_version'],
+            'check' => $this->checkPhpVersion($requirements['php_version'])
+        ];
+        
+        foreach ($requirements['php_extensions'] as $ext) {
+            $formData[] = [
+                'label' => 'Extensión de PHP Enable: '.$ext,
+                'check' => $this->checkPhpExtensionEnabled($ext),
+            ];
+        }
+        
+        return view('installer::requerimientos', compact('formData'));
     }
-
-    /**
-     * Store a newly created resource in storage.
-     * @param  Request $request
-     * @return Response
-     */
-    public function store(Request $request)
-    {
+    /*Paso para verificar los permisos de las carpetas*/
+    
+    public function permisos(){
+        
+        $permisos =config('installer.folder_permissions');
+        
+        foreach ($permisos as $path => $perm) {
+            $formData[] = [
+                'label' => 'Carpeta '.$path.' Permiso: '.$perm,
+                'check' => $this->checkFolderPermission($path,$perm)
+            ];
+        }
+        
+        return view('installer::permisos', compact('formData'));
     }
-
-    /**
-     * Show the specified resource.
-     * @return Response
-     */
-    public function show()
+    
+    /*Paso para modificar las variables de entorno*/
+    public function environment() {
+        $this->envPath = base_path('.env');
+        $this->envExamplePath = base_path('.env.example');
+        
+        $envConfig = $this->getEnvContent();
+        
+        return view('installer::environment', compact('envConfig'));
+    }    
+    
+    /*Para obtener el contenido del archivo .env o .evnv.example*/
+    public function getEnvContent()
     {
-        return view('installer::show');
+        if (!file_exists($this->envPath)) {
+            if (file_exists($this->envExamplePath)) {
+                copy($this->envExamplePath, $this->envPath);
+            } else {
+                touch($this->envPath);
+            }
+        }
+
+        return file_get_contents($this->envPath);
     }
-
-    /**
-     * Show the form for editing the specified resource.
-     * @return Response
-     */
-    public function edit()
+    
+    /*Para verificar las extensiones de php*/
+    protected function checkPhpExtensionEnabled($ext)
     {
-        return view('installer::edit');
+        return extension_loaded($ext);
     }
-
-    /**
-     * Update the specified resource in storage.
-     * @param  Request $request
-     * @return Response
-     */
-    public function update(Request $request)
+    
+    /*Para verificar la version de php*/
+    protected function checkPhpVersion($requiredPhpVersion)
     {
+        $currentPhpVersion = phpVersion();
+        
+        return version_compare($requiredPhpVersion, $currentPhpVersion, '<=');
     }
-
-    /**
-     * Remove the specified resource from storage.
-     * @return Response
-     */
-    public function destroy()
+    
+    /*Para verificar los permisos de las carpetas*/
+    protected function checkFolderPermission($path, $perm)
     {
+        return substr(sprintf('%o', fileperms(base_path($path))), -3) >= $perm;
     }
 }
