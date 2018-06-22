@@ -5,10 +5,11 @@ Route::group(['middleware' => 'web', 'prefix' => 'installer', 'namespace' => 'Mo
     Route::get('/', 'InstallerController@index');   
     Route::get('requerimientos', 'InstallerController@requerimientos');
     Route::get('permisos', 'InstallerController@permisos');    
+    Route::get('database', 'InstallerController@database');
     Route::get('environment','InstallerController@environment');
     Route::post('environment/save','InstallerController@environmentSave');
     
-    Route::get('database', [
+    /*Route::get('database', [
         'as' => 'database',
         'uses' => 'DatabaseController@database'
     ]);
@@ -16,5 +17,5 @@ Route::group(['middleware' => 'web', 'prefix' => 'installer', 'namespace' => 'Mo
     Route::get('final', [
         'as' => 'final',
         'uses' => 'FinalController@finish'
-    ]);
+    ]);*/
 });

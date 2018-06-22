@@ -13,18 +13,7 @@
                         <h3 class="panel-title"><i class="fa fa-cubes" aria-hidden="true"></i> Instalación de la Aplicación</h3>
                     </div>
                     <div class="panel-body">
-                        <div class="row iw-breadcrumb">
-                            <li class="iw-step-divider iw-current"></li>
-                            <li class="iw-step-divider iw-current"></li><li class="iw-step iw-current"><i class="fa fa-home"></i></li>
-                            <li class="iw-step-divider"></li><li class="iw-step"><i class="fa fa-sliders"></i></li>
-                            <li class="iw-step-divider"></li><li class="iw-step"><i class="fa fa-folder"></i></li>
-                            <li class="iw-step-divider"></li><li class="iw-step"><i class="fa fa-file-text-o"></i></li>
-                            <li class="iw-step-divider"></li><li class="iw-step"><i class="fa fa-database"></i></li>
-                            <li class="iw-step-divider"></li><li class="iw-step"><i class="fa fa-cubes"></i></li>
-                            <li class="iw-step-divider"></li><li class="iw-step"><i class="fa fa-child"></i></li>
-                            <li class="iw-step-divider"></li>
-                            <li class="iw-step-divider"></li>
-                        </div>
+                        @include('installer::layouts.steps')
                         <div class="">
                             <h2>Bienvenidos Laravel Start</h2>
                             <h3>Este proceso los guiará por cada una de las
@@ -43,4 +32,12 @@
 
 @section('script')
 <script src="{{ Module::asset('installer:js/module.js') }}"></script>
+<script type="text/javascript">
+    $(function () {
+
+        $('#div-home').addClass('iw-current');
+        $('#step-home').addClass('iw-current');
+    
+    });
+</script>
 @endsection

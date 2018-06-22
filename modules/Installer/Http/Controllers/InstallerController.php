@@ -54,6 +54,17 @@ class InstallerController extends Controller
         
         return view('installer::permisos', compact('formData'));
     }
+
+    /*Paso para configurar los parametros de la base de datos*/
+    
+    public function database(Request $request){
+        
+        if($request){
+
+        }
+        
+        return view('installer::database');
+    }
     
     /*Paso para modificar las variables de entorno*/
     public function environment() {
