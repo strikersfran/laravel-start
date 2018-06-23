@@ -11,10 +11,34 @@ Laravel Start es una aplicación web, basada en el framework Laravel 5.5, que pe
 Esta desarrollado de forma modular utilizando el paquete laravel-modules.
 
 ## Requisitos
-Laravel 5.5
-laravel-modules 2.7
-laravel-module-installer 0.1.4
 
+Este proyectos incluye los siguientes paquetes
+
+[Laravel 5.5](https://laravel.com/docs/5.5)
+[laravel-modules 2.7](https://github.com/nWidart/laravel-modules)
+[laravel-module-installer 0.1.4](https://github.com/joshbrw/laravel-module-installer)
+
+##Instalacion
+
+Para su instalación basta seguir los siguientes pasos:
+
+* Clonar el proyecto
+```
+git clone https://github.com/strikersfran/laravel-start.git
+```
+
+* Actualizar dependencias
+```
+composer update
+```
+* Instalar componentes
+```
+composer install
+```
+* Iniciar la aplicación en el navegador 
+```
+http://localhost/laravel-start/public/
+```
 
 ## Licencia
 
