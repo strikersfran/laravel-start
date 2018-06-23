@@ -14,11 +14,11 @@ Esta desarrollado de forma modular utilizando el paquete laravel-modules.
 
 Este proyectos incluye los siguientes paquetes
 
-[Laravel 5.5](https://laravel.com/docs/5.5)
-[laravel-modules 2.7](https://github.com/nWidart/laravel-modules)
-[laravel-module-installer 0.1.4](https://github.com/joshbrw/laravel-module-installer)
+* [Laravel 5.5](https://laravel.com/docs/5.5)
+* [laravel-modules 2.7](https://github.com/nWidart/laravel-modules)
+* [laravel-module-installer 0.1.4](https://github.com/joshbrw/laravel-module-installer)
 
-##Instalacion
+## Instalacion
 
 Para su instalación basta seguir los siguientes pasos:
 
