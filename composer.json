@@ -1,6 +1,6 @@
 {
 	"name" : "strikersfran/laravel-start",
-	"description" : "Laravel Start es una aplicación web, basada en el framework Laravel 5.5, que permite tener una base solida de un proyecto en laravel con un wizard install.",
+	"description" : "Laravel Start es una aplicacion web, basada en el framework Laravel 5.5, que permite tener una base solida de un proyecto en laravel con un wizard install.",
 	"keywords" : [
 		"framework",
 		"laravel"
