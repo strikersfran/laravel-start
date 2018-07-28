@@ -26,9 +26,13 @@ Route::get('modules/{module}/assets/{type}/{file}', [ function ($module, $type, 
     
     if($type == 'js'){
         return response()->file($path, array('Content-Type' => 'application/javascript'));
-    }else{
+    }else
+    if($type == 'css'){
         return response()->file($path, array('Content-Type' => 'text/css'));
-    } 
+    }
+    else{
+        return response()->file($path);
+    }
     
-    return response()->json([$path], 404);
+    return response()->json([$path], 408);
 }]);

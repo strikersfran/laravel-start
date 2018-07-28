@@ -10,6 +10,7 @@ and open the template in the editor.
 
 body {
   margin-top: 50px;
+  background:url("../img/fondo.jpg"); /*url de imagenes relativas al css*/
 }
 
 .iw-breadcrumb {
