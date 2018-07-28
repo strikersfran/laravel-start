@@ -1,37 +1,28 @@
-@extends('installer::layouts.master')
+@extends('installer::layouts.steps')
 
-@section('styles')
-<link href="{{ Module::asset('installer:css/module.css')}}" rel="stylesheet">
+@section('installer-title')
+Inicio de instalación
 @endsection
 
-@section('content')    
-    <div class="container ">
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2">
-                <div class="panel panel-primary">
-                    <div class="panel-heading">                        
-                        <h3 class="panel-title"><i class="fa fa-cubes" aria-hidden="true"></i> Instalación de la Aplicación</h3>
-                    </div>
-                    <div class="panel-body">
-                        @include('installer::layouts.steps')
-                        <div class="">
-                            <h2>Bienvenidos Laravel Start</h2>
-                            <h3>Este proceso los guiará por cada una de las
-                            opciones necesarias para llevar acabo la instalación de esta
-                            aplicación.</h3>
-                        </div>
-                    </div>
-                    <div class="panel-footer text-right">                        
-                        <a class="btn btn-danger" type="button" href="{{ url('installer/requerimientos')}}">Siguiente</a>                        
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-@stop
+@section('installer-styles')
 
-@section('script')
-<script src="{{ Module::asset('installer:js/module.js') }}"></script>
+@endsection
+
+@section('installer-content')    
+    
+    <div class="">
+        <h2>Bienvenidos Laravel Start</h2>
+        <h3>Este proceso los guiará por cada una de las
+        opciones necesarias para llevar acabo la instalación de esta
+        aplicación.</h3>
+    </div>    
+@endsection
+
+@section('installer-btn')
+<a class="btn btn-success" type="button" href="{{ url('installer/requerimientos')}}">Siguiente</a>
+@endsection
+
+@section('installer-script')
 <script type="text/javascript">
     $(function () {
 

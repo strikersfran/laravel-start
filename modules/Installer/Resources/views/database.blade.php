@@ -1,45 +1,60 @@
-@extends('installer::layouts.master')
+@extends('installer::layouts.steps')
 
-@section('styles')
-<link href="{{ Module::asset('installer:css/module.css') }}" rel="stylesheet">
+@section('installer-title')
+Configurar base de datos
 @endsection
 
-@section('content')    
-    <div class="container ">
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2">
-                <div class="panel panel-primary">
-                    <div class="panel-heading">                        
-                        <h3 class="panel-title"><i class="fa fa-cubes" aria-hidden="true"></i> Instalación de la Aplicación</h3>
-                    </div>
-                    <div class="panel-body">
-                        @include('installer::layouts.steps')
-                        <div class="">
-                            <h2>Base de dato</h2>
-                            <h4>Por favor introduzca la información de su base de datos</h4>   
-                            <form class="form" action="{{ url('installer/database')}}" method="POST">
-                                <select name="typedb">
-                                    <option value="mysql">MySql</option>
-                                    <option value="pgsql">Postgres</option>
-                                </select>
-                                <input type="text" name="portdb">
-                                <input type="text" name="userdb">
-                                <input type="text" name="passdb">
-                                <input type="text" name="namedb">
-                            </form>                         
-                        </div>
-                    </div>
-                    <div class="panel-footer text-right">                        
-                        <a class="btn btn-danger disabled" type="button" href="{{ url('installer/email')}}">Siguiente</a>                        
-                    </div>
+@section('installer-styles')
+
+@endsection
+
+@section('installer-content')    
+    
+    <div class="">
+        <h2>Base de dato</h2>
+        <h4>Por favor introduzca la información de su base de datos</h4>   
+        <form role="form" action="{{ url('installer/dbsave')}}" method="POST" id="formdb">
+            <input type="hidden" name="_token" value="{{ csrf_token() }}">
+            <div class="form-body">
+                <div class="form-group {{ $errors->has('tipodb') ? 'has-error' : ''}}">
+                    <label>Tipo</label>
+                    <select class="form-control" name="tipodb">
+                        <option value="mysql">MySql</option>
+                        <option value="pgsql">Postgres</option>
+                        {!! $errors->first('tipodb', '<p class="help-block">:message</p>') !!}
+                    </select>
+                </div>
+                <div class="form-group {{ $errors->has('portdb') ? 'has-error' : ''}}">
+                    <label>Puerto</label>                    
+                    <input type="number" name="portdb" class="form-control" placeholder="Introduzca un puerto" value="{{ $portdb or old('portdb')}}">
+                    {!! $errors->first('portdb', '<p class="help-block">:message</p>') !!}
+                </div>
+                <div class="form-group {{ $errors->has('userdb') ? 'has-error' : ''}}">
+                    <label>Usuario</label>                    
+                    <input type="text" name="userdb" value="{{ $userdb or old('userdb')}}" class="form-control" placeholder="Introduzca un usuario">
+                    {!! $errors->first('userdb', '<p class="help-block">:message</p>') !!}
+                </div>
+                <div class="form-group {{ $errors->has('passdb') ? 'has-error' : ''}}">
+                    <label>Contraseña</label>                    
+                    <input type="text" name="passdb" value="{{ $passdb or old('passdb')}}" class="form-control" placeholder="Introduzca una contraseña">
+                    {!! $errors->first('passdb', '<p class="help-block">:message</p>') !!}
+                </div>
+                <div class="form-group {{ $errors->has('namedb') ? 'has-error' : ''}}">
+                    <label>Base de dato</label>                    
+                    <input type="text" name="namedb" value="{{ $namedb or old('namedb')}}" class="form-control" placeholder="Introduzca una base de datos">
+                    {!! $errors->first('namedb', '<p class="help-block">:message</p>') !!}
                 </div>
             </div>
-        </div>
-    </div>
-@stop
+        </form>                         
+    </div>    
+@endsection
 
-@section('script')
-<script src="{{ Module::asset('installer:js/module.js') }}"></script>
+@section('installer-btn')
+<a class="btn btn-danger" type="button" href="{{ url('installer/permisos')}}">Atras</a>
+<a class="btn btn-success" type="button" href="javascript:enviar()">Siguiente</a>
+@endsection
+
+@section('installer-script')
 <script type="text/javascript">
     $(function () {
 
@@ -51,7 +66,10 @@
         $('#step-per').addClass('iw-current');
         $('#div-db').addClass('iw-current');
         $('#step-db').addClass('iw-current');
-    
     });
+
+    function enviar(){
+        $('#formdb').submit();
+    }
 </script>
 @endsection

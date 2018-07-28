@@ -18,9 +18,9 @@ Este proyectos incluye los siguientes paquetes
 * [laravel-modules 2.7](https://github.com/nWidart/laravel-modules)
 * [laravel-module-installer 0.1.4](https://github.com/joshbrw/laravel-module-installer)
 
-## Instalacion
+## Instalación
 
-Para su instalación basta seguir los siguientes pasos:
+Para su instalación debes seguir los siguientes pasos:
 
 * Clonar el proyecto
 ```

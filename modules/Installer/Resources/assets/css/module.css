@@ -50,10 +50,10 @@ body {
 
 .iw-breadcrumb li.iw-step {
     font-style: normal;
-    width: 50px;
-    min-width: 50px;
-    height: 50px;
-    line-height: 50px;
+    width: 55px;
+    min-width: 55px;
+    height: 55px;
+    line-height: 55px;
     font-size: 22px;
     display: -webkit-flex;
     display: -ms-flexbox;
@@ -64,7 +64,7 @@ body {
     -webkit-align-items: center;
     -ms-flex-align: center;
     align-items: center;
-    border-radius: 50%;
+    border-radius: 20%;
     color: #909090;
 }
 
